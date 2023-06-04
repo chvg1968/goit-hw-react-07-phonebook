@@ -7,7 +7,7 @@ const App = () => {
 
 return (
     <div className="phonebox">
-      <h1>Phonebook ☎</h1>
+      <h1>Phonebook<br />☎</h1>
       <ContactForm  />
       <h2>Contacts</h2>
       <SearchFilter />
