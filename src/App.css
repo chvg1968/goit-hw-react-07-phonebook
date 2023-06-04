@@ -8,7 +8,7 @@ h2 {
 
 .phonebox {
     margin: 0 auto;
-    transform: translateY(25%);
+    transform: translateY(15%);
     display: flex;
     flex-direction: column;
     align-items: center;
