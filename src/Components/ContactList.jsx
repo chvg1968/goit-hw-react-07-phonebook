@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectFilter } from '../redux/selectors';
-import { deleteContacts } from '../redux/tasksSlice';
+import { deleteContact } from '../redux/operations';
 
 
 
@@ -25,7 +25,7 @@ const ContactList = () => {
         {visibleContacts.map((contact) => (
           <li className="contact"  key={contact.id}>
             <p><span><b>{contact.name}</b></span> : {contact.number}</p>
-            <button  onClick={() => dispatch(deleteContacts(contact.id))}>Delete</button>
+            <button  onClick={() => dispatch(deleteContact(contact.id))}>Delete</button>
           </li>
         ))}
       </ul>
