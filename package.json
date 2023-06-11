@@ -1,5 +1,5 @@
 {
-    "name": "goit-react-hw-06-phonebook",
+    "name": "goit-react-hw-07-phonebook",
     "private": true,
     "version": "0.0.0",
     "type": "module",
@@ -13,6 +13,7 @@
     "dependencies": {
         "@redux-devtools/extension": "^3.2.5",
         "@reduxjs/toolkit": "^1.9.5",
+        "axios": "^1.4.0",
         "fuse.js": "^6.6.2",
         "nanoid": "^4.0.2",
         "prop-types": "^15.8.1",

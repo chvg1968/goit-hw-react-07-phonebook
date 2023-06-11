@@ -1,26 +1,17 @@
-import { useDispatch } from 'react-redux';
-import { addContacts } from '../redux/contactSlice';
-import { selectContacts} from '../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../redux/operations';
 import { useState, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
 
 function ContactForm() {
 
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
+  const contacts = useSelector((state) => state.contacts);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const nameInputRef = useRef(null);
   const numberInputRef = useRef(null);
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   dispatch(addContacts({ name, number }));
-  //   setName('');
-  //   setNumber('');
-  //   nameInputRef.current.focus();
-  // };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -58,7 +49,7 @@ function ContactForm() {
       setNumber('');
       return false;
     }
-    dispatch(addContacts({name, number}));
+    dispatch(addContact({name, number}));
     setName('');
     setNumber('');
     nameInputRef.current.focus();
