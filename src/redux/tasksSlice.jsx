@@ -44,4 +44,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export default tasksReducer = tasksSlice.reducer;
+const tasksReducer = tasksSlice.reducer; // Corrección: Definir "tasksReducer" correctamente
+
+export default tasksReducer;

@@ -8,17 +8,17 @@ function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector((state) => state.contacts);
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const nameInputRef = useRef(null);
-  const numberInputRef = useRef(null);
+  const phoneInputRef = useRef(null);
 
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === 'name') {
       setName(value);
-    } else if (name === 'number') {
-      setNumber(value);
+    } else if (name === 'phone') {
+      setPhone(value);
     }
   };
 
@@ -26,32 +26,32 @@ function ContactForm() {
     event.preventDefault();
     
 
-    const dublicateOfName = contacts.some(
+    const duplicateOfName = contacts.some(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
-    const dublicateOfNumber = contacts.some(
+    const duplicateOfPhone = contacts.some(
       contact =>
-        contact.number.replace(/-/g, '').replace(/ /g, '') ===
-        number.replace(/ /g, '').replace(/-/g, '')
+        contact.phone.replace(/-/g, '').replace(/ /g, '') ===
+        phone.replace(/ /g, '').replace(/-/g, '')
     );
 
-    if (dublicateOfName) {
+    if (duplicateOfName) {
       Swal.fire(`${name} is alredy in contacts`);
       setName('');
-      setNumber('');
+      setPhone('');
       return false;
     }
 
-    if (dublicateOfNumber) {
-      Swal.fire(`${number} is alredy in contacts`);
+    if (duplicateOfPhone) {
+      Swal.fire(`${phone} is alredy in contacts`);
       setName('');
-      setNumber('');
+      setPhone('');
       return false;
     }
-    dispatch(addContact({name, number}));
+    dispatch(addContact({name, phone}));
     setName('');
-    setNumber('');
+    setPhone('');
     nameInputRef.current.focus();
   };
 
@@ -80,10 +80,10 @@ function ContactForm() {
         pattern="^\+?\d{1,4}?[-.\s]?\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
-        name="number"
-        value={number}
+        name="phone"
+        value={phone}
         onChange={handleChange}
-        ref={numberInputRef}
+        ref={phoneInputRef}
         />
         <button type="submit">Add Contact</button>
         </form>
