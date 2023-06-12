@@ -18,15 +18,22 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   "contacts/addContact",
-  async ({ name, phone }, thunkAPI) => {
-    try {
-      const response = await axios.post("/contacts", { name, phone });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+  async ({ name, phone }, thunkAPI) => { 
+    try { const response = await axios.post("/contacts", { name, phone }); 
+    return response.data; } 
+    catch (error) 
+    { return thunkAPI.rejectWithValue(error.message); 
+    } 
+  }, 
+  {
+    // Include a non-serializable function in the meta property 
+    meta:(arg, { getState }) => { 
+      const state = getState(); 
+      const register = () => { console.log(state); };
+      return { register }; 
+    }, 
   }
-);
+  );
 
 export const deleteContact = createAsyncThunk(
   "contacts/deleteContact",
@@ -40,4 +47,6 @@ export const deleteContact = createAsyncThunk(
   }
 );
 
-export default [addContact, deleteContact];  
+const operations =  { addContact, deleteContact } ;  
+export default operations;
+export const contacts = { fetchContacts};

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from '../redux/selectors';
 import { addContact } from '../redux/operations';
 import { useState, useRef } from 'react';
 import Swal from 'sweetalert2'
@@ -6,7 +7,8 @@ import Swal from 'sweetalert2'
 function ContactForm() {
 
   const dispatch = useDispatch();
-  const contacts = useSelector((state) => state.contacts);
+  const contacts = useSelector(selectContacts);
+  console.log(contacts);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const nameInputRef = useRef(null);
